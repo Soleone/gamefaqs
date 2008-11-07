@@ -12,7 +12,7 @@ h2. Usage example
 
 <pre>
 <code>
-  require 'gamefaqs'
+  require 'game_faqs'
   
   # Search for a game containing the two words on the Nintendo DS
   castlevania = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
