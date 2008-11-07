@@ -1,6 +1,7 @@
 h1. GameFAQs library
 
 Access information about all games (any platform) from GameFAQs.
+
 You can search for games by title and platform, and then view _Reviews_, _FAQs_, _Cheats_ for it.
 
 h2. Installation
@@ -8,6 +9,7 @@ h2. Installation
 TODO
 
 h2. Usage example
+
 <pre>
 <code>
   require 'gamefaqs'
