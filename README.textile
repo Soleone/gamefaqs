@@ -9,6 +9,7 @@ TODO
 
 h2. Usage example
 
+<code>
   require 'gamefaqs'
   # Search for a game containing the two words on the Nintendo DS
   castlevania = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
@@ -20,3 +21,4 @@ h2. Usage example
   review.score
   review.title
   review.author
+</code>
