@@ -10,14 +10,12 @@ TODO
 h2. Usage example
 
   require 'gamefaqs'
-  
   # Search for a game containing the two words on the Nintendo DS
   castlevania = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
   # get all reviews for this game
   reviews = GameFaqs::Review.all_for_game(castlevania)
   # get the first review in the list
   review = reviews.first
-  
   # Score in the format 9/10
   review.score
   review.title
