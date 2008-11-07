@@ -4,7 +4,7 @@ module GameFaqs
 
     PATTERN = "//div.body/table/tr/td/a"
 
-    attr_reader :name, :platform, :homepage, :reviews, :faqs, :codes
+    attr_reviews :name, :platform, :homepage, :faqs, :codes
     
     def initialize(name, platform, id)
       @name = name
@@ -22,6 +22,10 @@ module GameFaqs
     
     def to_s
       "#{@name} [#{platform}]"
+    end
+    
+    def reviews
+      @reviews ||= Review.all_for_game(self)
     end
     
     class << self
