@@ -1,6 +1,7 @@
 h1. GameFAQs library
 
 Access information about all games (any platform) from GameFAQs.
+
 You can search for games by title and platform, and then view _Reviews_, _FAQs_, _Cheats_ for it.
 
 h2. Installation
@@ -9,7 +10,9 @@ TODO
 
 h2. Usage example
 
-  require 'gamefaqs'
+<pre>
+<code>
+  require 'game_faqs'
   
   # Search for a game containing the two words on the Nintendo DS
   castlevania = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
@@ -22,3 +25,5 @@ h2. Usage example
   review.score
   review.title
   review.author
+</code>
+</pre>
