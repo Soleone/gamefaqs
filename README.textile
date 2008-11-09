@@ -6,20 +6,13 @@ You can search for games by title and platform, and then view _Reviews_, _FAQs_,
 
 h2. Installation
 
-@gem install soleone-gamefaqs --source=http://gems.github.com@
+@gem install Soleone-gamefaqs --source=http://gems.github.com@
 
-h2. Usage
+(Case sensitive!)
 
-<pre>
-<code>
-require 'gamefaqs'
+h2. Getting started
 
-# and for convenience:
-include GameFaqs
-</code>
-</pre>
-
-h2. Examples
+@require 'gamefaqs'@
 
 h3. Find games and platforms
 
@@ -63,3 +56,17 @@ h3. Reviews
   review.author
 </code>
 </pre>
+
+h3. Requirements
+
+only *Hpricot* so far
+
+h3. Issues
+
+It is not that fast, because sometimes there have to be multiple webpages parsed at once. For example to retrieve the names of all games for a platform, at least 26 pages need to be parsed (one for each letter of the alphabet).
+
+Maybe speed can be worked on with better caching in the future.
+
+h3. Contribute
+
+If you're interested in this kind of stuff and want to help improve this library, feel free to fork this project and send me pull-requests/patches.
