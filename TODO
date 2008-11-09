@@ -18,3 +18,5 @@ DONE Gemify this project
 - Make listing all games faster if possible
 
 - Detailed tests (test::unit/shoulda) - lightweight
+
+- command line client (maybe, syntax will propably be awkward)
