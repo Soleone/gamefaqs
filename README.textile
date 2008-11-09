@@ -6,19 +6,26 @@ You can search for games by title and platform, and then view _Reviews_, _FAQs_,
 
 h2. Installation
 
-Currently you need to clone this repository to use the library (Gem version coming soon).
+@gem install soleone-gamefaqs --source=http://gems.github.com@
 
-TODO
+h2. Usage
 
-h2. Usage examples
+<pre>
+<code>
+require 'gamefaqs'
 
-To start just @require 'game_faqs'@ (and for convenience you can also @include GameFaqs@)
+# and for convenience:
+include GameFaqs
+</code>
+</pre>
+
+h2. Examples
 
 h3. Find games and platforms
 
 <pre>
 <code>
-  require 'game_faqs'
+  require 'gamefaqs'
   
   # Search for a game containing two words on the Nintendo DS
   game = GameFaqs::Search.game("Castlevania Ecclesia", "DS")

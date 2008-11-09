@@ -7,7 +7,7 @@ require 'date'
 
 # load all source files
 lib = %w[caching platform game search list review]
-lib.each { |file| require File.join(File.dirname(__FILE__), 'lib', file) }
+lib.each { |file| require File.join(File.dirname(__FILE__), 'gamefaqs', file) }
 
 
 module GameFaqs
