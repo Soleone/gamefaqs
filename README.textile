@@ -16,14 +16,24 @@ h2. Usage example
   
   # Search for a game containing the two words on the Nintendo DS
   castlevania = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
-  # get all reviews for this game
+
+  # Get the average score from all reviews
+  castlevania.average_score
+  # Get the average score from only detailed reviews (there are :detailed, :full and :quick)
+  castlevania.average_score(:detailed)
+
+  # Get all reviews for this game
   reviews = castlevania.reviews
-  # get the first review in the list
+  # Get only quick reviews for this game
+  reviews = castlevania.reviews(:quick)
+  
+  # Get the first review in the list
   review = reviews.first
   
   # Score in the format 9/10
   review.score
   review.title
   review.author
+  
 </code>
 </pre>

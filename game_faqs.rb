@@ -4,7 +4,7 @@ require 'open-uri'
 require 'hpricot'
 
 # load all source files
-lib = %w[cached_document platform game search review]
+lib = %w[caching platform game search list review]
 lib.each { |file| require File.join(File.dirname(__FILE__), 'lib', file) }
 
 
