@@ -1,16 +1,18 @@
 Stuff left to do for the library:
 ---------------------------------
 
-1. Get detailed review text
+DONE - Get detailed review text
 
-2. Method to remove HTML markup
+DONE - Method to remove HTML markup
 
-3. List all FAQs for a game
+- List all FAQs for a game
 
-4. Get detailed FAQ text
+- Get detailed FAQ text
 
-5. List all Cheats for a game
+- List all Cheats for a game
 
-6. Get detailed cheat text
+- Get detailed cheat text
   
-7. Make listing all games faster if possible
+- Make listing all games faster if possible
+
+- Detailed tests (test::unit/shoulda) - lightweight

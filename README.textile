@@ -10,30 +10,47 @@ TODO
 
 h2. Usage example
 
+h3. Find games and platforms
+
 <pre>
 <code>
   require 'game_faqs'
   
-  # Search for a game containing the two words on the Nintendo DS
-  castlevania = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
+  # Search for a game containing two words on the Nintendo DS
+  game = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
+  
+  # You can also search starting from the platform
+  snes = GameFaqs::Platform.find("snes")
+  game = snes.find("super mario land")
+</code>
+</pre>
 
+h3. Reviews
+
+<pre>
+<code>
   # Get the average score from all reviews
-  castlevania.average_score
+  game.average_score
   # Get the average score from only detailed reviews (there are :detailed, :full and :quick)
-  castlevania.average_score(:detailed)
+  game.average_score(:detailed)
 
   # Get all reviews for this game
-  reviews = castlevania.reviews
+  reviews = game.reviews
   # Get only quick reviews for this game
-  reviews = castlevania.reviews(:quick)
+  reviews = game.reviews(:quick)
   
   # Get the first review in the list
   review = reviews.first
   
   # Score in the format 9/10
   review.score
-  review.title
-  review.author
   
+  # Get the full text of the review (original html stripped/converted)
+  review.text
+  
+  # Other information
+  review.title
+  review.created_at
+  review.author
 </code>
 </pre>

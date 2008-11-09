@@ -1,7 +1,9 @@
 require 'rubygems'
 # gems
-require 'open-uri'
 require 'hpricot'
+
+require 'open-uri'
+require 'date'
 
 # load all source files
 lib = %w[caching platform game search list review]
@@ -16,5 +18,13 @@ protected
   def self.extract_id(url)
     url.match(/\/([\da-zA-Z]+)\.html$/)
     $1
+  end
+  
+  # 1. convert <br> to \n
+  # 2. convert <b> to * (textile)
+  # 3. convert <i> to _ (textile)
+  # 4. strip all other tags
+  def self.strip_html(string)
+    string.gsub(/<br ?\/?>/, "\n").gsub(/<b>(.+)<\/b>/i, "*\\1*").gsub(/<i>(.+)<\/i>/i, "_\\1_").gsub(/<\/?(\d|\w)+>/i, "")
   end
 end
