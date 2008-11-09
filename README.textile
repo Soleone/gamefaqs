@@ -25,8 +25,6 @@ h3. Find games and platforms
 
 <pre>
 <code>
-  require 'gamefaqs'
-  
   # Search for a game containing two words on the Nintendo DS
   game = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
   
