@@ -8,7 +8,9 @@ h2. Installation
 
 TODO
 
-h2. Usage example
+h2. Usage examples
+
+To start just @require 'game_faqs'@ (and for convenience you can also @include GameFaqs@)
 
 h3. Find games and platforms
 
