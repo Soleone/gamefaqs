@@ -1,10 +1,12 @@
-h1. GameFAQs library
+h1. GameFAQs Library
 
 Access information about all games (any platform) from GameFAQs.
 
 You can search for games by title and platform, and then view _Reviews_, _FAQs_, _Cheats_ for it.
 
 h2. Installation
+
+Currently you need to clone this repository to use the library (Gem version coming soon).
 
 TODO
 
