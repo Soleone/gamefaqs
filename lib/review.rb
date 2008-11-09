@@ -4,7 +4,7 @@ module GameFaqs
     
     REVIEW_TYPES = [:detailed, :full, :quick]
     
-    attr_reader :game, :id, :score, :author, :title, :type, :text, :date
+    attr_reader :game, :id, :score, :author, :title, :type
     
     def initialize(options={})
       raise ArgumentError.new("Need at least the game and the review id") unless options[:game] && options[:id]

@@ -71,6 +71,44 @@ module GameFaqs
         end
       end
 
+      def faqs(game, type=nil, refresh=false)
+        faqs = cached_value("faqs-#{game.to_s}", [], refresh) do |faqs|
+          url = game.homepage.sub(/\/home\//, "/game/")
+          doc = Hpricot(open(url))
+          doc.search("//div.head/h1") do |h1|
+            header = h1.inner_html
+
+            h1.search("../../div.body/table/tr") do |tr|
+              faq = {}
+              faq[:type] = header
+              tr.search("td:eq(0)") do |td|
+                td.search("a") do |a|
+                  review[:id] = GameFaqs.extract_id(a['href'])
+                  review[:title] = a.inner_html.strip
+                end
+              end
+              tr.search("td:eq(1)") do |td|
+                td.search("a") do |a|
+                  review[:author] = a.inner_html.strip
+                end
+              end
+              tr.search("td:eq(2)") do |td|
+                review[:score] = td.inner_html.strip
+              end
+              review[:game] = game   
+              reviews << Review.new(review)
+            end
+          end
+        end
+        if type
+          types = FAQ::FAQ_TYPES
+          raise ArgumentError.new("Type must be one of #{types.join(', ')}") unless types.include?(type.to_sym)
+          faqs.reject { |faq| faq.type != type.to_sym}
+        else
+          faqs
+        end
+      end
+
       # find all IDs for every platform (cached, do only once)
       def platform_ids(refresh=false)
         cached_value("game_ids", {}, refresh) do |ids|

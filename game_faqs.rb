@@ -15,8 +15,8 @@ module GameFaqs
   SEARCH_URL = "#{BASE_URL}/search/index.html"
 
 protected  
-  def self.extract_id(url)
-    url.match(/\/([\da-zA-Z]+)\.html$/)
+  def self.extract_id(url, with_html=true)
+    url.match(/\/([\da-zA-Z]+)#{'\.html' if with_html}$/)
     $1
   end
   
