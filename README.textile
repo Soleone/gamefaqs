@@ -30,7 +30,7 @@ h3. Find games and platforms
   
   # You can also search starting from the platform
   snes = GameFaqs::Platform.find("snes")
-  game = snes.find("super mario land")
+  game = snes.find("super mario world")
 </code>
 </pre>
 
