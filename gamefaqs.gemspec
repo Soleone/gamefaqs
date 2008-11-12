@@ -1,4 +1,4 @@
-lib_files  = %w[caching faq game list platform review search]
+lib_files  = %w[caching faq game list platform review search random]
 test_files = %w[gamefaqs_test]
 mock_files = %w[reviews_response search_response]
 
@@ -11,8 +11,8 @@ end
 
 Gem::Specification.new do |s|
   s.name     = "gamefaqs"
-  s.version  = "0.0.2"
-  s.date     = "2008-11-09"
+  s.version  = "0.0.3"
+  s.date     = "2008-11-11"
   s.summary  = "Webcrawler for fetching information about games from www.gamefaqs.com"
   s.email    = "soleone@gmail.com"
   s.homepage = "http://github.com/soleone/gamefaqs"
