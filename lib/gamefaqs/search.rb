@@ -44,14 +44,12 @@ module GameFaqs
         # get by full name (case insensitive)
         names = List.platforms.select { |p| p.name.downcase == platform_name.downcase }
         # find other similar if not found exactly one before
-        names = List.platforms.select{|p| p.name.downcase =~ /#{platform_name.split(' ').join('.*')}/i} if names.size != 1
+        names = List.platforms.select{|p| p.name =~ /#{platform_name.split(' ').join('.*')}/i} if names.size != 1
         # if still nothing it is probably if you searched for "n64".
         if names.size != 1
-          platform = ""
-          platform_name.each_byte do
-            |byte| platform << byte.chr << ".*"
-          end
-          names = List.platforms.select{ |p| p.name.downcase =~ Regexp.compile(platform) }
+          platform_regexp = ""
+          platform_name.each_byte { |byte| platform_regexp << byte.chr << ".*" }
+          names = List.platforms.select{ |p| p.name =~ /#{platform_regexp}/i }
         end
         
         case names.size

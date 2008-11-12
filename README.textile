@@ -57,6 +57,24 @@ h3. Reviews
 </code>
 </pre>
 
+h3. Examples for quick random quotes
+
+<pre>
+<code>
+  include GameFaqs
+
+  # The title of a random review for Super Mario Land
+  Random.review("super mario land", "game boy").title
+  
+  Random.one_line_review("super mario land", "game boy")
+  # => "Not Nintendo's (or my) best, but still a decent effort." - 6/10
+
+  Random.one_line_review("super mario land", "game boy", :detailed => true)
+  # => "Super Mario Land [Game Boy]: Not Nintendo's (or my) best, but still a decent effort." - 6/10
+</code>
+</pre>
+
+
 h2. Requirements
 
 *Hpricot* (will be installed automatically by RubyGems as a dependency)
