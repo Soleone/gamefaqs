@@ -1,11 +1,16 @@
 require 'test/unit'
-require '../game_faqs'
+require '../lib/gamefaqs'
 
 class GameFaqsTest < Test::Unit::TestCase
   include GameFaqs
+
+  def setup
+    @game ||= Search.game("gothic ii", "pc")    
+  end
   
-  def test_all_platforms
-  #  assert Platform.all.first.is_a?(Platform)
+  def test_all_platforms_available
+    assert Platform.all.size > 0
+    assert Platform.all.first.is_a?(Platform)
   end
   
   def test_search_for_game
@@ -16,14 +21,18 @@ class GameFaqsTest < Test::Unit::TestCase
     assert_equal "DS", game.platform.name
   end
   
-  def test_game_reviews_count
-    game = Search.game("Castlevania Order", "ds")
-    reviews = Review.all_for_game(game)
-    #reviews.each { |r| puts r }
+  def test_game_reviews_available
+    reviews = Review.all_for(@game)
+    assert reviews.size > 0
+    assert reviews.first.is_a?(Review)
   end
   
-  def test_average_score
-    game = Search.game("gothic ii", "pc")
-    puts Review.average_score(game)
+  def test_average_score_available
+    assert @game.average_score <= 10
+  end
+  
+  def test_review_score_available
+    assert @game.reviews.first.score[/(\d\d?)\/\d\d/]
+    assert_equal $1.to_i, @game.reviews.first.score_to_i
   end
 end
