@@ -27,5 +27,8 @@ module GameFaqs
       sum / reviews(review_type).size.to_f
     end
     
+    def self.find(game, platform)
+      Search.game(game, platform)
+    end
   end
 end

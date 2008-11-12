@@ -6,7 +6,7 @@ require 'open-uri'
 require 'date'
 
 # load all source files
-lib = %w[caching platform game search list review]
+lib = %w[caching platform game search list review random]
 lib.each { |file| require File.join(File.dirname(__FILE__), 'gamefaqs', file) }
 
 
