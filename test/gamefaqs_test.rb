@@ -1,5 +1,5 @@
 require 'test/unit'
-require '../lib/gamefaqs'
+require File.join(File.dirname(__FILE__), '../lib/gamefaqs')
 
 class GameFaqsTest < Test::Unit::TestCase
   include GameFaqs
@@ -34,5 +34,25 @@ class GameFaqsTest < Test::Unit::TestCase
   def test_review_score_available
     assert @game.reviews.first.score[/(\d\d?)\/\d\d/]
     assert_equal $1.to_i, @game.reviews.first.score_to_i
+  end
+  
+  # takes about a minute!
+  
+  #def test_list_all_games
+  #  games = List.games("ds")
+  #  assert games.size > 100
+  #  assert games.first.is_a?(Game)
+  #end
+  
+  def test_list_all_top_games
+    games = List.top_games("pc")
+    assert_equal 10, games.size
+    assert games.first.is_a?(Game)
+  end
+  
+  def list_games_by_genre
+    games = List.games_by_genre("pc", "Action")
+    assert games.size > 100
+    assert games.first.is_a?(Game)
   end
 end

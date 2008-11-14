@@ -27,4 +27,21 @@ protected
   def self.strip_html(string)
     string.gsub(/<br ?\/?>/, "\n").gsub(/<b>(.+)<\/b>/i, "*\\1*").gsub(/<i>(.+)<\/i>/i, "_\\1_").gsub(/<\/?(\d|\w)+>/i, "")
   end
+  
+  # Extract a table with a certain header from a html document
+  # Yields 1) the Hpricot body element which usually contains a table
+  # And 2) the heading of the table as a String
+  def self.find_table(doc, header_regexp=/./, sub_path=nil)
+    doc.search("//div.head/h1") do |h1|
+      header = h1.inner_html
+
+      if header =~ header_regexp
+        body_path = "../../div.body#{'/'+sub_path if sub_path}"
+        h1.search(body_path) do |body|
+          yield body, header
+        end
+      end
+    end
+  end
+  
 end

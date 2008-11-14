@@ -8,6 +8,7 @@ module GameFaqs
       game and game.reviews[rand(game.reviews.size)]
     end
     
+    # Return the title and the score of a review
     def one_line_review(game, platform=game.platform, options={:detailed => false})
       rev = review(game, platform)
       rev and "#{options[:detailed] ? (rev.game.to_s << ': ') : ''}\"#{rev.title}\" - #{rev.score}"
