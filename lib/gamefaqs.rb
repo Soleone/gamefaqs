@@ -6,17 +6,23 @@ require 'open-uri'
 require 'date'
 
 # load all source files
-lib = %w[caching platform game search list review random]
+lib = %w[caching platform game search list review question random]
 lib.each { |file| require File.join(File.dirname(__FILE__), 'gamefaqs', file) }
 
 
 module GameFaqs
   BASE_URL = "http://www.gamefaqs.com"
   SEARCH_URL = "#{BASE_URL}/search/index.html"
+  SITEMAP_URL = "http://sitemap.gamefaqs.com"
 
 protected  
   def self.extract_id(url, with_html=true)
     url.match(/\/([\da-zA-Z]+)#{'\.html' if with_html}$/)
+    $1
+  end
+  
+  def self.extract_question_id(url)
+    url.match(/\/[\da-zA-Z]+\.html?qid=(\d+)$/)
     $1
   end
   

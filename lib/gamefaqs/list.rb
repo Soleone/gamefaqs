@@ -79,6 +79,30 @@ module GameFaqs
         end
       end
 
+      def questions(game, refresh=false)
+        questions = cached_value("questions-#{game.to_s}", [], refresh) do |questions|
+          url = game.homepage.sub(/\/home\//, "/qna/") << "?type=-1"
+          doc = Hpricot(open(url))
+          GameFaqs.find_table(doc, /Help$/, "table/tr") do |tr, header|
+            question = {}
+            question[:type] = header
+            tr.search("td:eq(0)") do |td|
+              td.search("a") do |a|
+                question[:id] = GameFaqs.extract_question_id(a['href'])
+                question[:title] = a.inner_html.strip
+              end
+            end
+            tr.search("td:eq(1)") do |td|
+              question[:status] = td.inner_html
+            end
+            tr.search("td:eq(2)") do |td|
+              question[:replies] = td.inner_html
+            end
+            questions << Question.new(game, question[:id], question)
+          end
+        end
+      end
+      
       def faqs(game, type=nil, refresh=false)
         faqs = cached_value("faqs-#{game.to_s}", [], refresh) do |faqs|
           url = game.homepage.sub(/\/home\//, "/game/")

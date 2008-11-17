@@ -55,4 +55,9 @@ class GameFaqsTest < Test::Unit::TestCase
     assert games.size > 100
     assert games.first.is_a?(Game)
   end
+  
+  def list_questions_for_game
+    game = Game.find("fallout 3", "pc")
+    assert List.questions(game).size > 50
+  end
 end
