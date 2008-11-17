@@ -5,7 +5,7 @@ DONE - Get detailed review text
 
 DONE - Method to remove HTML markup
 
-DONE Gemify this project
+DONE - Gemify this project
 
 - List all FAQs for a game
 
@@ -20,3 +20,7 @@ DONE Gemify this project
 - Detailed tests (test::unit/shoulda) - lightweight
 
 - command line client (maybe, syntax will propably be awkward)
+
+- Get detailed Question/Answers information
+
+- improve caching (make sure doesn't eat up to much memory)
