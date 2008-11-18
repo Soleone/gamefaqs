@@ -1,37 +1,37 @@
-h1. GameFAQs Library
+== GameFAQs Library
 
 Access information about all games (any platform) from GameFAQs.
 
-You can search for games by title and platform, and then view _Reviews_, _FAQs_, _Cheats_ for it.
+You can search for games by title and platform, and then view  for it.
 
-h2. Installation
+== Installation
 
-@gem install Soleone-gamefaqs --source=http://gems.github.com@
+gem install Soleone-gamefaqs --source=http://gems.github.com
 
 (Case sensitive!)
 
-h2. Getting started
+== Getting started
 
-@require 'gamefaqs'@
+require 'gamefaqs'
 
-h3. Find games and platforms
+== Find games and platforms
 
-<pre>
-<code>
+
+
   # Search for a game containing two words on the Nintendo DS
   game = GameFaqs::Search.game("Castlevania Ecclesia", "DS")
   
   # You can also search starting from the platform
   snes = GameFaqs::Platform.find("snes")
   game = snes.find("super mario world")
-</code>
-</pre>
 
 
-h3. Examples for quick random quotes
 
-<pre>
-<code>
+
+== Examples for quick random quotes
+
+
+
   include GameFaqs
 
   game = Game.find("super mario land", "game boy")
@@ -41,39 +41,39 @@ h3. Examples for quick random quotes
   # long version
   Random.review("super mario land", "game boy").title
   
-  Random.one_line_review(game)
+  Random.onereview(game)
   # => "Not Nintendo's (or my) best, but still a decent effort." - 6/10
 
-  Random.one_line_review(game, :detailed => true)
+  Random.onereview(game, :detailed => true)
   # => "Super Mario Land [Game Boy]: Not Nintendo's (or my) best, but still a decent effort." - 6/10
 
   # The title of a random user question for a game
   question = Random.question(game).title
-</code>
-</pre>
 
 
-h3. Top 10 Games
+
+
+== Top 10 Games
 
 Get the most anticipated games for any platform at the moment.
 
-!http://i464.photobucket.com/albums/rr9/dennistheisen/11-18-20085-36-36AM-TOP_GAMES.png!
 
-<pre>
-<code>
+
+
+
   List.top_games("xbox 360")
-</code>
-</pre>
 
 
-h3. Reviews
 
-You can get score(s) for a game, and also read detailed articles. The reviews range from _quick_ over _detailed_ to _full_.
 
-!http://i464.photobucket.com/albums/rr9/dennistheisen/11-18-20085-47-12AM-REVIEWS.png!
+== Reviews
 
-<pre>
-<code>
+You can get score(s) for a game, and also read detailed articles. The reviews range from .
+
+
+
+
+
   # Get the average score from all reviews
   game.average_score
   # Get the average score from only detailed reviews (there are :detailed, :full and :quick)
@@ -89,13 +89,13 @@ You can get score(s) for a game, and also read detailed articles. The reviews ra
   
   # Score in the format 9/10
   review.score
-</code>
-</pre>
 
-!http://i464.photobucket.com/albums/rr9/dennistheisen/11-18-20085-15-53AM-review.png!
 
-<pre>
-<code>
+
+
+
+
+
   # Get the full text of the review (original html stripped/converted)
   review.text
   
@@ -103,19 +103,19 @@ You can get score(s) for a game, and also read detailed articles. The reviews ra
   review.title
   review.created_at
   review.author
-</code>
-</pre>
 
 
-h3. Questions (and Answers)
+
+
+== Questions (and Answers)
 
 Users can post questions for any game (many different categories, e.g. technical or plot).
 Other users then write a solution for that problem. It's very Forum-like.
 
-!http://i464.photobucket.com/albums/rr9/dennistheisen/11-18-20085-18-46AM-RedAlertQNA.png!
 
-<pre>
-<code>
+
+
+
   # Get an array with all user questions for a game
   game.questions
   
@@ -127,20 +127,20 @@ Other users then write a solution for that problem. It's very Forum-like.
   question.status
   # Get an array of all the answers for this question
   question.answers
-</code>
-</pre>
 
 
-h2. Requirements
 
-*Hpricot* (will be installed automatically by RubyGems as a dependency)
 
-h2. Issues
+== Requirements
+
+ (will be installed automatically by RubyGems as a dependency)
+
+== Issues
 
 Speed! Because sometimes there have to be multiple webpages parsed at once.
 
 For example to retrieve the names of all games for a platform, at least 26 pages need to be parsed (one for each letter of the alphabet).
 
-h2. Contribute
+== Contribute
 
 If you're interested in this kind of stuff and want to help improve this library, feel free to fork this project and send me pull-requests/patches.
