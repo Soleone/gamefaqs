@@ -27,7 +27,50 @@ h3. Find games and platforms
 </code>
 </pre>
 
+
+h3. Examples for quick random quotes
+
+<pre>
+<code>
+  include GameFaqs
+
+  game = Game.find("super mario land", "game boy")
+
+  # The title of a random review for Super Mario Land
+  Random.review(game).title
+  # long version
+  Random.review("super mario land", "game boy").title
+  
+  Random.one_line_review(game)
+  # => "Not Nintendo's (or my) best, but still a decent effort." - 6/10
+
+  Random.one_line_review(game, :detailed => true)
+  # => "Super Mario Land [Game Boy]: Not Nintendo's (or my) best, but still a decent effort." - 6/10
+
+  # The title of a random user question for a game
+  question = Random.question(game).title
+</code>
+</pre>
+
+
+h3. Top 10 Games
+
+Get the most anticipated games for any platform at the moment.
+
+!http://i464.photobucket.com/albums/rr9/dennistheisen/11-18-20085-36-36AM-TOP_GAMES.png!
+
+<pre>
+<code>
+  List.top_games("xbox 360")
+</code>
+</pre>
+
+
 h3. Reviews
+
+You can get score(s) for a game, and also read detailed articles. The reviews range from _:quick_ over _:detailed_ to _:full_.
+
+!http://i464.photobucket.com/albums/rr9/dennistheisen/11-18-20085-47-12AM-REVIEWS.png!
 
 <pre>
 <code>
@@ -57,7 +100,15 @@ h3. Reviews
 </code>
 </pre>
 
+!http://i464.photobucket.com/albums/rr9/dennistheisen/11-18-20085-15-53AM-review.png!
+
+
 h3. Questions (and Answers)
+
+Users can post questions for any game (many different categories, e.g. technical or plot).
+Other users then write a solution for that problem. It's very Forum-like.
+
+!http://i464.photobucket.com/albums/rr9/dennistheisen/11-18-20085-18-46AM-RedAlertQNA.png!
 
 <pre>
 <code>
@@ -75,29 +126,6 @@ h3. Questions (and Answers)
 </code>
 </pre>
 
-h3. Examples for quick random quotes
-
-<pre>
-<code>
-  include GameFaqs
-
-  game = Game.find("super mario land", "game boy")
-
-  # The title of a random review for Super Mario Land
-  Random.review(game).title
-  # long version
-  Random.review("super mario land", "game boy").title
-  
-  Random.one_line_review(game)
-  # => "Not Nintendo's (or my) best, but still a decent effort." - 6/10
-
-  Random.one_line_review(game, :detailed => true)
-  # => "Super Mario Land [Game Boy]: Not Nintendo's (or my) best, but still a decent effort." - 6/10
-
-  # The title of a random user question for a game
-  question = Random.question(game).title
-</code>
-</pre>
 
 h2. Requirements
 
@@ -107,7 +135,7 @@ h2. Issues
 
 Speed! Because sometimes there have to be multiple webpages parsed at once.
 
-For example to retrieve the names of all games for a platform, at least 26 pages need to be parsed (one for each letter of the alphabet). So better caching strategies are something to be worked on in the future.
+For example to retrieve the names of all games for a platform, at least 26 pages need to be parsed (one for each letter of the alphabet).
 
 h2. Contribute
 

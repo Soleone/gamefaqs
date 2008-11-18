@@ -26,3 +26,5 @@ DONE - Gemify this project
 DONE - improve caching (make sure doesn't eat up to much memory)
 
 - refactor Caching more like Rails' syntax
+
+- Game Images (Box and Ingame)
