@@ -23,4 +23,6 @@ DONE - Gemify this project
 
 - Get detailed Question/Answers information
 
-- improve caching (make sure doesn't eat up to much memory)
+DONE - improve caching (make sure doesn't eat up to much memory)
+
+- refactor Caching more like Rails' syntax

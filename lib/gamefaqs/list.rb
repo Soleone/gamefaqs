@@ -20,7 +20,7 @@ module GameFaqs
       # find all games (very expensive, takes nearly a minute, because of 27 html requests and resulting parsing)
       def games(platform, refresh=false)
         platform = Platform.find(platform) unless platform.is_a?(Platform)
-        cached_value("games-#{platform}", []) do |games|
+        cached_value("games-#{platform.to_s.downcase}", []) do |games|
           letters = ('a'..'z').to_a << '0'
           letters.each do |letter|
             doc = Hpricot(open("#{platform.homepage}list_#{letter}.html"))
@@ -31,7 +31,7 @@ module GameFaqs
   
       def games_by_genre(platform, genre, refresh=false)
         platform = Platform.find(platform) unless platform.is_a?(Platform)
-        cached_value("games_by_#{genre}-#{platform}", []) do |games|
+        cached_value("games_by_#{genre.downcase}-#{platform.to_s.downcase}", []) do |games|
           doc = Hpricot(open("#{platform.homepage}cat_#{Game.GENRES[genre]}.html"))
           insert_games_to_array(games, doc, platform, /Games by Category/)
         end
@@ -39,14 +39,14 @@ module GameFaqs
       
       def top_games(platform, refresh=false)
         platform = Platform.find(platform) unless platform.is_a?(Platform)
-        cached_value("top_games-#{platform}", []) do |games|
+        cached_value("top_games-#{platform.to_s.downcase}", []) do |games|
           doc = Hpricot(open(platform.homepage))
           insert_games_to_array(games, doc, platform, /Top 10 Games/, "ul/li/a")
         end
       end
       
       def reviews(game, type=nil, refresh=false)
-        reviews = cached_value("reviews-#{game.to_s}", [], refresh) do |reviews|
+        reviews = cached_value("reviews-#{game.to_s.downcase}", [], refresh) do |reviews|
           url = game.homepage.sub(/\/home\//, "/review/")
           doc = Hpricot(open(url))
           GameFaqs.find_table(doc, /Reviews/, "table/tr") do |tr, header|
@@ -80,7 +80,7 @@ module GameFaqs
       end
 
       def questions(game, refresh=false)
-        questions = cached_value("questions-#{game.to_s}", [], refresh) do |questions|
+        questions = cached_value("questions-#{game.to_s.downcase}", [], refresh) do |questions|
           url = game.homepage.sub(/\/home\//, "/qna/") << "?type=-1"
           doc = Hpricot(open(url))
           GameFaqs.find_table(doc, /Help$/, "table/tr") do |tr, header|
@@ -104,7 +104,7 @@ module GameFaqs
       end
       
       def faqs(game, type=nil, refresh=false)
-        faqs = cached_value("faqs-#{game.to_s}", [], refresh) do |faqs|
+        faqs = cached_value("faqs-#{game.to_s.downcase}", [], refresh) do |faqs|
           url = game.homepage.sub(/\/home\//, "/game/")
           doc = Hpricot(open(url))
           GameFaqs.find_table(doc, /./, "table/tr") do |tr, header|

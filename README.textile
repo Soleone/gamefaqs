@@ -57,23 +57,47 @@ h3. Reviews
 </code>
 </pre>
 
+h3. Questions (and Answers)
+
+<pre>
+<code>
+  # Get an array with all user questions for a game
+  game.questions
+  
+  question = game.questions.first
+  
+  # Get the number of answers for this question
+  question.replies
+  # Get the status of the question (e.g. already answered or not)
+  question.status
+  # Get an array of all the answers for this question
+  question.answers
+</code>
+</pre>
+
 h3. Examples for quick random quotes
 
 <pre>
 <code>
   include GameFaqs
 
+  game = Game.find("super mario land", "game boy")
+
   # The title of a random review for Super Mario Land
+  Random.review(game).title
+  # long version
   Random.review("super mario land", "game boy").title
   
-  Random.one_line_review("super mario land", "game boy")
+  Random.one_line_review(game)
   # => "Not Nintendo's (or my) best, but still a decent effort." - 6/10
 
-  Random.one_line_review("super mario land", "game boy", :detailed => true)
+  Random.one_line_review(game, :detailed => true)
   # => "Super Mario Land [Game Boy]: Not Nintendo's (or my) best, but still a decent effort." - 6/10
+
+  # The title of a random user question for a game
+  question = Random.question(game).title
 </code>
 </pre>
-
 
 h2. Requirements
 

@@ -24,6 +24,10 @@ module GameFaqs
       List.reviews(self, review_type)
     end
     
+    def questions
+      List.questions(self)
+    end
+    
     def average_score(review_type=nil)
       sum = reviews(review_type).map{|r| r.score_to_i}.inject{|memo, score| memo + score}
       sum ? (sum / reviews(review_type).size.to_f) : -1

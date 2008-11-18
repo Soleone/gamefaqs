@@ -60,4 +60,20 @@ class GameFaqsTest < Test::Unit::TestCase
     game = Game.find("fallout 3", "pc")
     assert List.questions(game).size > 50
   end
+  
+  def test_cache_resizing
+    Caching::Cache.max_size = 3
+    5.times { Game.find("fallout 3", "pc") }
+    puts Caching::Cache.size
+    assert Caching::Cache.size <= 3
+    Caching::Cache.max_size = 100
+  end
+  
+  def test_random_question
+    game = Game.find("fallout 3", "pc")
+    q = Random.question(game)
+    assert q.is_a?(Question)
+    puts q.title
+  end
+  
 end

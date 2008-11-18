@@ -8,7 +8,7 @@ module GameFaqs
       # Per default it returns nil when no game could be found, or if there are multiple matches
       # Throws a detailed SearchError with help when no exact match is found (only when :whiny => true)
       def game(game_name, platform, options={:refresh => false, :whiny => false})
-        cached_value("search-#{game_name}-#{platform}", nil, options[:refresh]) do
+        cached_value("search-#{game_name.to_s.downcase} [#{platform.to_s.downcase}]", nil, options[:refresh]) do
           platform = self.platform(platform) unless platform.is_a?(Platform)
           games = []
           doc = Hpricot(open("#{SEARCH_URL}#{add_params(game_name, platform)}"))
