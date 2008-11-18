@@ -1,8 +1,8 @@
 h1. GameFAQs Library
 
-Access information about all games (any platform) from GameFAQs.
+This is a simple gem which gives you access to information about all games (any platform) from GameFAQs.com
 
-You can search for games by title and platform, and then view _Reviews_, _FAQs_, _Cheats_ for it.
+You can search for games by title and platform, and then view _Reviews_, _FAQs_, _Cheats_ and _Answers_ for it.
 
 h2. Installation
 
@@ -140,6 +140,12 @@ h2. Issues
 Speed! Because sometimes there have to be multiple webpages parsed at once.
 
 For example to retrieve the names of all games for a platform, at least 26 pages need to be parsed (one for each letter of the alphabet).
+
+h2. Bugs
+
+If you're having any problems or exceptions while using this library, I encourage you to add a ticket (the detailed the better) to the issue tracker below:
+
+"http://soleone.lighthouseapp.com/projects/20137-gamefaqs":http://soleone.lighthouseapp.com/projects/20137-gamefaqs
 
 h2. Contribute
 
