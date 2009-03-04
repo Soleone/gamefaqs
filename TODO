@@ -11,6 +11,8 @@ DONE - Gemify this project
 
 - Get detailed FAQ text
 
+- Search for some text in a FAQ and return a snippet (e.g. 50 or 100 words around the text) with the possible solution
+
 - List all Cheats for a game
 
 - Get detailed cheat text
